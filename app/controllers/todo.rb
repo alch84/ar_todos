@@ -9,12 +9,9 @@ case ARGV[0]
   when "list"
     TaskViews.show(Task.all)
   when "add"
-    Task.create(task: "#{ARGV[1..-1].join(' ')}", status: false)
-    puts "Appended #{ARGV[1..-1].join(' ')} from todo list"
+    TaskViews.add
   when "delete"
-    Task.destroy_all(id: ARGV[1].to_i)
-     "Deleted task number #{[ARGV[1].to_i]}"
+    TaskViews.delete
   when "complete"
-    puts "Completed task number #{[ARGV[1].to_i]}"
-    Task.update(ARGV[1].to_i, status: true)
+    TaskViews.complete
 end
