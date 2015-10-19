@@ -7,8 +7,7 @@ require_relative "../views/task_views.rb"
 
 case ARGV[0]
   when "list"
-    list = Task.all
-    TaskViews.show(list)
+    TaskViews.show(Task.all)
   when "add"
     Task.create(task: "#{ARGV[1..-1].join(' ')}", status: false)
     puts "Appended #{ARGV[1..-1].join(' ')} from todo list"
