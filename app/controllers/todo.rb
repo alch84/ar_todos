@@ -3,13 +3,12 @@
 require_relative '../../config/application'
 require 'byebug'
 require 'sqlite3'
+require_relative "../views/task_views.rb"
 
 case ARGV[0]
   when "list"
     list = Task.all
-    list.each_with_index do |x,i|
-        puts "#{list[i].id}. #{list[i].task} [#{list[i].status}]"
-    end
+    TaskViews.show(list)
   when "add"
     Task.create(task: "#{ARGV[1..-1].join(' ')}", status: false)
     puts "Appended #{ARGV[1..-1].join(' ')} from todo list"
