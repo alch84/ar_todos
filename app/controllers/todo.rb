@@ -6,7 +6,10 @@ require 'sqlite3'
 
 case ARGV[0]
   when "list"
-    p Task.all
+    list = Task.all
+    list.each_with_index do |x,i|
+        puts "#{list[i].id}. #{list[i].task} [#{list[i].status}]"
+    end
   when "add"
     Task.create(task: "#{ARGV[1..-1].join(' ')}", status: false)
     puts "Appended #{ARGV[1..-1].join(' ')} from todo list"
